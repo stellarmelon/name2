@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="my_name_string">Mike McNalley</string>
+    <string name="date_worked_string">4/12/2018</string>
+    <string name="description_of_image">the mirari</string>
+</resources>
