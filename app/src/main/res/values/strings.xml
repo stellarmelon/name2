@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="my_name_string">Mike McNalley</string>
-    <string name="date_worked_string">4/12/2018</string>
-    <string name="description_of_image">the mirari</string>
+    <string name="date_worked_string">4/19/2018</string>
+    <string name="Name_query">Enter your name</string>
+    <string name="Date_OB_query">Enter your date of birth</string>
+    <string name="Email_query">Enter your email</string>
+    <string name="Username_query">Enter your username</string>
+    <string name="Age_query">Enter your age</string>
+    <string name="Submit">Submit</string>
+
 </resources>
