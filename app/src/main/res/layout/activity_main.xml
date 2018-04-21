@@ -84,25 +84,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/AgeEditText"
-        android:layout_width="280dp"
-        android:layout_height="86dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="212dp"
-        android:ems="10"
-        android:hint="@string/Age_query"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/DOBEditText"
         android:layout_width="276dp"
         android:layout_height="71dp"
-        android:layout_marginBottom="232dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="328dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:ems="10"
         android:hint="@string/Date_OB_query"
         android:inputType="date"
@@ -113,9 +100,9 @@
         android:id="@+id/nameEditText"
         android:layout_width="281dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="156dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginBottom="264dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="@string/Name_query"
         android:inputType="textPersonName"
@@ -132,5 +119,14 @@
         android:text="@string/Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="338dp" />
 
 </android.support.constraint.ConstraintLayout>

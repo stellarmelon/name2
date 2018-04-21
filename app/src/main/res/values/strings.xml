@@ -8,5 +8,6 @@
     <string name="Username_query">Enter your username</string>
     <string name="Age_query">Enter your age</string>
     <string name="Submit">Submit</string>
+    <string name="Return">Return</string>
 
 </resources>

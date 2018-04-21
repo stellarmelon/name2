@@ -22,7 +22,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.second_activity);
         textView = findViewById(R.id.textView);
         mainBtn = findViewById(R.id.button2);
-        StringBuilder msg = new StringBuilder("Hello \n");
+        StringBuilder msg = new StringBuilder("Welcome! Thanks for signing up ");
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
@@ -31,6 +31,7 @@ public class SecondActivity extends AppCompatActivity {
             String name = b.getString(Constants.KEY_Username);
             msg.append(name).append("\n");
             Log.i(TAG, "Welcome! Thanks for signing up " + name +"!");
+            textView.setText(msg);
         }
 
 

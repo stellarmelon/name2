@@ -47,7 +47,7 @@ public class MainActivityTest {
         Intents.init();
         onView(withId(R.id.secondActivityBtn)).perform(click());
         intended(hasComponent(SecondActivity.class.getName()));
-        intended(hasExtra(Constants.KEY_NAME, "Kyle McNutt"));
+        intended(hasEtra(Constants.KEY_NAME, "Kyle McNutt"));
         intended(hasExtra(Constants.KEY_AGE, 24));
         Intents.release();
     }

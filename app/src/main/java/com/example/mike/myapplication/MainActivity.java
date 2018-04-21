@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         DOBEditText = findViewById(R.id.DOBEditText);
         EmailEditText = findViewById(R.id.EmailEditText);
         NameEditText = findViewById(R.id.nameEditText);
-        AgeEditText = findViewById(R.id.AgeEditText);
+
 
         Log.i(TAG, "onCreate()");
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,12 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 Integer userAge = Integer.parseInt(AgeEditText.getText().toString());
                     if(userAge < 18){
-                    loginBtn.setText("Sorry, cannot create account due to age restriction");
+                    loginBtn.setText("bad age");
                 }
-                else{
                 intent.putExtra(Constants.KEY_Username, UsernameEditText.getText().toString());
                 startActivity(intent);
-            }}
+            }
                                     }
         );
     }
