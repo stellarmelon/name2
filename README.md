@@ -1,0 +1,2 @@
+[![CircleCI](https://circleci.com/gh/stellarmelon/name2.svg?style=svg)](https://circleci.com/gh/stellarmelon/name2)
+[![codecov](https://codecov.io/gh/stellarmelon/name2/branch/master/graph/badge.svg)](https://codecov.io/gh/stellarmelon/name2)
