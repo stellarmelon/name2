@@ -13,24 +13,28 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private Button loginBtn;
-    private EditText AgeEditText;
+    public android.widget.DatePicker DatePicker;
     private EditText UsernameEditText;
-    private EditText DOBEditText;
-    private EditText EmailEditText;
+    private EditText DescriptionEditText;
+    private EditText OccupationEditText;
     private EditText NameEditText;
-
+    private String birthString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         UsernameEditText = (EditText) findViewById(R.id.UsernameEditText);
 
-        loginBtn = findViewById(R.id.button);
-        DOBEditText = findViewById(R.id.DOBEditText);
-        EmailEditText = findViewById(R.id.EmailEditText);
-        NameEditText = findViewById(R.id.nameEditText);
-
+        Button loginBtn = (Button)findViewById(R.id.button);
+        DescriptionEditText = findViewById(R.id.descriptionEditText);
+        OccupationEditText = findViewById(R.id.OccupationEditText);
+        DatePicker = findViewById(R.id.set);
+        int birthDay = DatePicker.getDayOfMonth();
+        int birthMonth = DatePicker.getMonth();
+        int birthYear = DatePicker.getYear();
+        final String birthString = ""+birthMonth+"/"+birthDay+"/"+birthYear+"";
 
         Log.i(TAG, "onCreate()");
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -38,11 +42,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                Integer userAge = Integer.parseInt(AgeEditText.getText().toString());
-                    if(userAge < 18){
-                    loginBtn.setText("bad age");
-                }
+
+
                 intent.putExtra(Constants.KEY_Username, UsernameEditText.getText().toString());
+                        intent.putExtra(Constants.KEY_Age, birthString);
+                        intent.putExtra(Constants.KEY_Description, DescriptionEditText.getText().toString());
+                        intent.putExtra(Constants.KEY_Occupation, OccupationEditText.getText().toString());
                 startActivity(intent);
             }
                                     }
@@ -68,18 +73,16 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         Log.i(TAG, "onRestoreInstanceState()");
-        if (savedInstanceState.containsKey(Constants.KEY_NAME)) {
-            NameEditText.setText((String)savedInstanceState.get(Constants.KEY_NAME));
+        if (savedInstanceState.containsKey(Constants.KEY_Description)) {
+            DescriptionEditText.setText((String)savedInstanceState.get(Constants.KEY_Description));
         }
 
-        if (savedInstanceState.containsKey(Constants.KEY_Age)) {
-            AgeEditText.setText((String) savedInstanceState.get(Constants.KEY_Age));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_DOB)) {
-            DOBEditText.setText((String) savedInstanceState.get(Constants.KEY_DOB));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
-            EmailEditText.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
+
+//        if (savedInstanceState.containsKey(Constants.KEY_DOB)) {
+  //          DOBEditText.setText((String) savedInstanceState.get(Constants.KEY_DOB));
+    //    }
+        if (savedInstanceState.containsKey(Constants.KEY_Occupation)) {
+            OccupationEditText.setText((String) savedInstanceState.get(Constants.KEY_Occupation));
         }
         if (savedInstanceState.containsKey(Constants.KEY_Username)) {
             UsernameEditText.setText((String) savedInstanceState.get(Constants.KEY_Username));
@@ -91,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         Log.i(TAG, "onSaveInstanceState()");
-        outState.putString(Constants.KEY_NAME, NameEditText.getText().toString());
-        outState.putString(Constants.KEY_Age, AgeEditText.getText().toString());
-        outState.putString(Constants.KEY_DOB, DOBEditText.getText().toString());
-        outState.putString(Constants.KEY_EMAIL, EmailEditText.getText().toString());
+        outState.putString(Constants.KEY_Description, NameEditText.getText().toString());
+
+
+        outState.putString(Constants.KEY_Occupation, OccupationEditText.getText().toString());
         outState.putString(Constants.KEY_Username, UsernameEditText.getText().toString());
     }
 

@@ -14,31 +14,50 @@ public class SecondActivity extends AppCompatActivity {
     private static final String TAG = SecondActivity.class.getSimpleName();
     private TextView textView;
     private Button mainBtn;
+    private TextView UsernameTextView;
+    private TextView AgeTextView;
+    private TextView OccupationTextView;
+    private TextView DescriptionTextView;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
-        textView = findViewById(R.id.textView);
-        mainBtn = findViewById(R.id.button2);
-        StringBuilder msg = new StringBuilder("Welcome! Thanks for signing up ");
+        UsernameTextView = findViewById(R.id.Username);
+        AgeTextView = findViewById(R.id.Age);
+        OccupationTextView = findViewById(R.id.Occupation);
+        DescriptionTextView = findViewById(R.id.description);
+        mainBtn = findViewById(R.id.Return);
+
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
         assert b != null;
         if (b.containsKey(Constants.KEY_Username)) {
             String name = b.getString(Constants.KEY_Username);
-            msg.append(name).append("\n");
-            Log.i(TAG, "Welcome! Thanks for signing up " + name +"!");
-            textView.setText(msg);
+            Log.i(TAG, name);
+            UsernameTextView.setText(name);
+        }
+
+        if (b.containsKey(Constants.KEY_Occupation)) {
+            String occupation = b.getString(Constants.KEY_Occupation);
+            Log.i(TAG, occupation);
+            OccupationTextView.setText(occupation);
+        }
+        if (b.containsKey(Constants.KEY_Age)) {
+            String age = b.getString(Constants.KEY_Age);
+            Log.i(TAG, age);
+            AgeTextView.setText(age);
+        }
+        if (b.containsKey(Constants.KEY_Description)) {
+            String description = b.getString(Constants.KEY_Description);
+            Log.i(TAG, description);
+            DescriptionTextView.setText(description);
         }
 
 
 
-
-
-        textView.setText(msg);
 
         Log.i(TAG, "onCreate()");
 
@@ -58,11 +77,11 @@ public class SecondActivity extends AppCompatActivity {
         Log.i(TAG, "onRestart()");
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart()");
-    }
+    //@Override
+    //protected void onStart() {
+      //  super.onStart();
+        //Log.i(TAG, "onStart()");
+    //}
 
     @Override
     protected void onResume() {
