@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="my_name_string">Mike McNalley</string>
-    <string name="date_worked_string">4/19/2018</string>
+    <string name="date_worked_string">4/26/2018</string>
     <string name="Name_query">Enter your name</string>
     <string name="Date_OB_query">Enter your date of birth</string>
     <string name="Email_query">Enter your email</string>
