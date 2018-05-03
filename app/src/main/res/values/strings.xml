@@ -11,5 +11,7 @@
     <string name="Return">Return</string>
     <string name="occupation_String">Enter your Occupation</string>
     <string name="description">Enter a description of yourself</string>
+    <string name="MatchesString">Matches page coming soon!</string>
+    <string name="SettingsString">Settings coming soon!</string>
 
 </resources>

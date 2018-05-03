@@ -1,24 +1,12 @@
 package com.example.mike.myapplication;
 
-
-
-
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.widget.Toolbar;
-import android.support.design.widget.TabLayout;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.support.v4.view.ViewPager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,58 +20,108 @@ public class MainActivity extends AppCompatActivity {
     private EditText NameEditText;
     private String birthString;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+
+        UsernameEditText = (EditText) findViewById(R.id.UsernameEditText);
+
+        Button loginBtn = (Button)findViewById(R.id.button);
+        DescriptionEditText = findViewById(R.id.descriptionEditText);
+        OccupationEditText = findViewById(R.id.OccupationEditText);
+        DatePicker = findViewById(R.id.set);
+        int birthDay = DatePicker.getDayOfMonth();
+        int birthMonth = DatePicker.getMonth();
+        int birthYear = DatePicker.getYear();
+        final String birthString = ""+birthMonth+"/"+birthDay+"/"+birthYear+"";
+
+        Log.i(TAG, "onCreate()");
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View view){
+                                            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+
+                                            intent.putExtra(Constants.KEY_Username, UsernameEditText.getText().toString());
+                                            intent.putExtra(Constants.KEY_Age, birthString);
+                                            intent.putExtra(Constants.KEY_Description, DescriptionEditText.getText().toString());
+                                            intent.putExtra(Constants.KEY_Occupation, OccupationEditText.getText().toString());
+                                            startActivity(intent);
+                                        }
+                                    }
+        );
     }
-    // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListContentFragment(), "List");
-        adapter.addFragment(new TileContentFragment(), "Tile");
-        adapter.addFragment(new CardContentFragment(), "Card");
-        viewPager.setAdapter(adapter);
+
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart()");
     }
 
-    static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart()");
+    }
 
-        public Adapter(FragmentManager manager)
-        {
-            super(manager);
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        Log.i(TAG, "onRestoreInstanceState()");
+        if (savedInstanceState.containsKey(Constants.KEY_Description)) {
+            DescriptionEditText.setText((String)savedInstanceState.get(Constants.KEY_Description));
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
+//        if (savedInstanceState.containsKey(Constants.KEY_DOB)) {
+        //          DOBEditText.setText((String) savedInstanceState.get(Constants.KEY_DOB));
+        //    }
+        if (savedInstanceState.containsKey(Constants.KEY_Occupation)) {
+            OccupationEditText.setText((String) savedInstanceState.get(Constants.KEY_Occupation));
         }
+        if (savedInstanceState.containsKey(Constants.KEY_Username)) {
+            UsernameEditText.setText((String) savedInstanceState.get(Constants.KEY_Username));
+        }
+    }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
+/*    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+        Log.i(TAG, "onSaveInstanceState()");
+        outState.putString(Constants.KEY_Description, NameEditText.getText().toString());
+
+
+        outState.putString(Constants.KEY_Occupation, OccupationEditText.getText().toString());
+        outState.putString(Constants.KEY_Username, UsernameEditText.getText().toString());
+    }*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy()");
     }
 }
