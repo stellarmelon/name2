@@ -53,7 +53,7 @@ public class ExampleInstrumentedTest {
         try {
             Intents.init();
             onView(withId(R.id.button)).perform(scrollTo(), click());
-            intended(hasComponent(SecondActivity.class.getName()));
+            intended(hasComponent(ProfileContentFragment.class.getName()));
             intended(hasExtra(Constants.KEY_Username, "Legit Name"));
             intended(hasExtra(Constants.KEY_Description, "Legit Name"));
             intended(hasExtra(Constants.KEY_Occupation, "Legit Name"));
